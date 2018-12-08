@@ -50,7 +50,7 @@ In het reservatieprobleem kunnen er twee soorten constraints onderscheden worden
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}
 \label{sec:methodologie}
-Een CSP oplossen is een complexe aangelegenheid. Voor het oplossen van deze complexe problemen bestaan er softwarepaketten. Een eerste deel van het onderzoek zal zijn om te onderzoeken of het CSP-probleem opgelost kan worden binnen de huidige technologiestack en indien niet welke externe softwarebibliotheek de meest logische keuze lijkt om het oplossen eenvoudiger te maken. Eens het CSP opgelost kan worden zal er onderzocht worden hoe dit geïntegreerd kan worden in de huidige architectuur van het systeem. 
+Een CSP oplossen is een complexe aangelegenheid. Voor het oplossen van deze complexe problemen bestaan er softwarebibliotheken. Een eerste deel van het onderzoek zal zijn om te onderzoeken of het CSP-probleem opgelost kan worden binnen de huidige technologiestack en indien niet welke externe softwarebibliotheek de meest logische keuze lijkt om het oplossen eenvoudiger te maken. Eens het CSP opgelost kan worden zal er onderzocht worden hoe dit geïntegreerd kan worden in de huidige architectuur van het systeem. 
 
 Het doel van het onderzoek is niet het oplijsten van de verschillende manieren om het vraagstuk op te lossen. Er zijn tientallen verschillende softwarepakketten en nog eens meer algoritmen om CSP problemen mee op te lossen. Deze allemaal vergelijken zou een onderzoek op zich zijn. Het doel van dit onderzoek is om \textit{een} manier te identificeren en te onderzoeken hoe deze geïntegreerd kan worden in de huidige architectuur en de mogelijke implicaties hiervan te identificeren. De eindscriptie zal als leiddraad dienen voor de ontwikkelaars van Partago om een meer geoptimaliseerd reservatiesysteem te ontwikkelen. 
 
@@ -67,16 +67,13 @@ Het onderzoek zal uit drie stappen bestaan:
 Voor het oplossen van het CSP is de meest voor de handliggende manier het gebruik van de softwarebibliotheek Optaplanner. Zelf een algoritme implementeren binnen de huidige technologiestack lijkt buiten de kennis, mogelijkheden en tijdsbestek te liggen van het ontwikkelaarsteam.
 Optaplanner is de meest aantoongevende CSP oplosser. Het is een lichtgewicht en integreerbare planning engine. Het stelt normale Java programmeurs in staat om optimalisatieproblemen efficient op te lossen. \autocite{optaplanner} Het huidige reservatiesysteem maakt grotendeels gebruik van Google technologieën. Een alternatief dat het te bekijken waard is zijn de OR-tools door Google. \autocite{ortools} Echter de meeste vakliteratuur nu reeds geraadpleegd vermeld Optaplanner. Een meer uitgebreide studie dient uitsluitsel te geven over welke software gebruikt gaat worden waarbij de werkbaarheid voor de ontwikkelaars van Partago de doorslaggevende factor zal zijn. De gekozen softwarebibliotheek zal specifiek geimplementeerd en geconfigureerd moeten worden zodat het het reservatieprobleem kan oplossen. Dit ligt ook binnen het bestek van dit onderzoek. Een demo-run met dummydata van auto's, zones en cooperanten dient bewijs te leveren dat de gekozen softwarebibliotheek in staat is om het probleem op een tijdsperformante manier op te lossen. 
 
-Door de gebrekkige ervaring hoe het huidige reservatiesysteem op architecturaal niveau is opgebouwd is het niet mogelijk om grote architectuurwijzigingen nu reeds te identificeren. Optaplanner kan met behulp frameworks Camel of RESTEasy beschikbaar worden gesteld als REST service. \autocite{manualoptaplanner} In een microservice architectuur lijkt dit een mooie oplossing om een geavanceerder reservatiesysteem te integreren met de rest van de gebruikte technologiestack.  
+Door de gebrekkige ervaring hoe het huidige reservatiesysteem op architecturaal niveau is opgebouwd is het niet mogelijk om grote architectuurwijzigingen nu reeds te identificeren. Optaplanner kan met behulp frameworks Camel of RESTEasy beschikbaar worden gesteld als REST service. \autocite{manualoptaplanner} In een microservice architectuur lijkt dit een mooie oplossing om een geavanceerder reservatiesysteem te integreren met de rest van de gebruikte technologiestack.
 
-
-
+Het huidige reservatieproces voor een gebruiker is heel eenvoudig. Er wordt gereserveerd voor een bepaalde periode voor een bepaalde auto. Wanneer reservaties niet langer voor een specifieke auto zullen zijn moet de gebruiker wel verschillende van de constraints kunnen bepalen. Er moet bewaakt worden dat dit op een gebruiksvriendelijke manier in de userinterface geïmplementeerd wordt zodat de positieve gebruikerservaring bewaard kan worden.
 
 %Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de stukken van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet hoe je je data gaat moeten structureren.%
 
 %---------- Verwachte conclusies ----------------------------------------------
 \section{Verwachte conclusies}
 \label{sec:verwachte_conclusies}
-
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
-
+Als Partago meer en meer coöperanten ten dienste wil zijn is het opschalen van het reservatiesysteem een kritische stap. De beoogde bachelorproef wil het plan uittekenen om deze kritische stap op een doordachte manier te nemen.  
