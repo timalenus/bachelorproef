@@ -1,21 +1,44 @@
 %---------- Inleiding ---------------------------------------------------------
-
 \section{Introductie} % The \section*{} command stops section numbering
 \label{sec:introductie}
 Partago is een coöperatie (co-op) met als missie een leefbare omgeving te helpen creëren. Dit doen we door samen elektrisch te rijden. Partago stelt elektrische deelauto's ter beschikking aan zijn leden. Hiervoor heeft Partago een eigen platform ontwikkeld. In 2019 wil Partago als co-op met IT-capaciteit, via een overkoepelende organisatie, het deelplatform ter beschikking stellen aan andere elektrische deelautocoöperaties over heel Europa.
 
 Partago is oorspronkelijk ontstaan in Gent, maar de interesse vanuit andere gemeenten neemt volop toe. Ook in Gent zelf groeit de coöperatie. De vloot in eigen beheer neemt dan ook aan een sneltempo toe. 
 
-De groeiende vloot en het groeiend aantal gebruikers botst op enkele functionele limitaties van het huidige reservatiesysteem. Het huidige systeem dient opgeschaald te worden om met de meer complexe omgang van de coöperatie en die van andere coöperaties te kunnen omgaan. 
+Bij het opschalen van een systeem denkt men klassiek eerst aan de niet-functionele vereisten. De groeiende vloot en het groeiend aantal gebruikers botst echter ook op enkele functionele limitaties van het huidige systeem. Het huidige reservatiesysteem dient opgeschaald te worden om met de meer complexe omgang van de coöperatie en die van andere coöperaties te kunnen omgaan. In wat volgt zullen de huidige functionele limitaties geschetst worden. 
 
 %---------- Stand van zaken ---------------------------------------------------
 
-\section{Stand van zaken}
-\label{sec:stand-van-zaken}
+\section{State-of-the-art}
+\label{sec:state-of-the-art}
+\subsection{Huidig reservatiesysteem}
+Vooraleer coöperanten gebruik mogen maken van een deelauto dient deze gereserveerd worden. Auto's staan verspreid over het werkingsgebied. Werkingsgebieden zijn onderverdeeld in verschillende zones of wijken. Een zone is de thuisbasis van een auto. Binnen één zone kunnen evenwel verschillende parkeerplaatsen zijn waar de auto zich bevindt: een publieke laadpaal, een parkeerplaats gereserveerd voor deelauto's, etc. Via de Partago app kunnen er reservaties worden gemaakt voor een specifieke auto. Indien de auto beschikbaar is wordt deze toegewezen aan het account van de gebruiker en kan de gebruiker de auto openen met de app. Tussen twee reservaties wordt een buffertijd voorzien zodat de auto's terug kunnen opladen.   
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein. Dit kan bijvoorbeeld een literatuurstudie zijn. Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek? Wat is de relevantie met jouw onderzoek?
+\subsection{Basisprobleem}
+Gebruikers maken een reservatie per auto. Nu Partago groeit geeft dit echter geen optimaal gebruik van auto's wanneer er in één zone meerdere auto's zijn. 
+We schetsen het probleem dat zich voordoet aan de hand van een eenvoudig voorbeeld: 
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Doll1954}! Denk zeker goed na welke werken je refereert en waarom.
+In de stationswijk zijn er 2 Partago deelauto's. Jan maakt een reservatie voor auto1 van 10h-12h. Piet maakt een reservatie voor auto2 van 14h-16h. Ilse, die ook woont in de stationswijk, wil een auto reserveren tussen 11h-15h. Het systeem zal echter melden dat dit niet mogelijk is. Om 11h is auto1 nog in gebruik en om 15h is auto2 al bezet. Moesten de reservaties van Jan en Piet echter beide voor auto1 zijn kon Ilse wel auto2 gebruiken.
+
+Bovenstaand eenvoudig voorbeeld wordt snel heel complex wanneer er meerdere gebruikers, reservatieaanvragen en deelauto's bijkomen in het vraagstuk.
+Een planningprobleem behoord tot de NP-complete problemen. Zulke problemen worden snel onhandelbaar en kunnen niet opgelost worden met combinatoriek. Planningproblemen hebben vaak maar toegang tot een beperkt aantal middelen. Als resultaat hiervan zijn er vaak gecompliceerde beperkingen (\textit{constraints}) \autocite{negnevitsky}.
+NP-complete problemen wil zeggen dat het eenvoudig is om een een gegeven oplossing te verifiëren, maar dat er geen eenvoudige manier bestaat om een optimale oplossing te vinden \autocite{manualoptaplanner}.
+
+We kunnen het basisprobleem herleiden tot een Constraint Satisfaction Problem (of CSP). Een CSP is gedefinieerd door een set \textbf{variabelen} $X_{1}$, $X_{2},...,X_{n}$ en een set \textbf{constraints} $C_{1}, C_{2},...C_{m}$. Elke variabele $X_{i}$ heeft een niet leeg \textbf{domein} $D_{i}$ van mogelijke waarden. Elke constraint $C_{i}$ heeft betrekking tot een subset van de variabelen en specifieert de mogelijke combinaties van waarden voor deze subset. Een toestand van het probleem is gedefinieerd als een \textbf{toewijzing} van waarden aan sommige van de variabelen $X_{i} =  v_{i}, X_{j} = v_{j}$... Een toewijzing dat geen enkele van de constraints schendt is een \textbf{consistente} of legale toewijzing. Een volledige toewijzing of \textbf{oplossing} van het CSP is een toewijzing waarin alle variabelen vernoemd worden en aan alle constraints is voldaan. Soms moet een oplossing van een CSP er ook naar streven een strafscore te minimaliseren \autocite{norvig}.
+
+\subsection{Bijkomende complexiteiten}
+Het is niet moeilijk om enkele extra beperkingen van het reservatieprobleem te formuleren die de complexiteit enorm doen toenemen. In wat volgt is een beperkte lijst van enkele van de beperkingen. Het vervolledigen van deze lijst van beperkingen zal ook een belangrijk plaats innemen in het onderzoek.
+\begin{itemize}
+	\item Partago heeft twee soorten auto's in de aanbieding. Een elektrische stadswagen en een elektrische bestelwagen. Voor sommige cooperanten maakt het misschien niet uit welke auto ze krijgen toegewezen, maar iemand die de ruimte van een bestelwagen nodig heeft moet dit wel nog kunnen aangeven.
+	\item Sommige auto's zijn niet altijd beschikbaar tijdens de kantooruren omdat deze gebruikt worden door een bedrijf of een gemeente. Met het huidige reservatiesysteem worden deze auto's weinig gekozen. Een optimalisatie van de reserveringen is extra interessant voor deze wagens.
+	\item Batterijstatus van de wagen moet in overeenstemming zijn met de geplande rit. Er zijn ook wagens van het zelfde type met een grotere batterij. Voor een langere rit is het gebruik van een wagen met grotere autonomie dus aangewezen.
+	\item In de huidige zone is er misschien geen auto beschikbaar, maar in een naburige zone op wandelafstand misschien wel. Ook met deze auto's zou rekening gehouden moeten worden.
+	\item Ook een auto die stilstaat heeft een waarde. Enerzijds marketing, maar anderzijds verhoogt dit ook het gevoel van beschikbaarheid. 
+	\item Een specifieke auto moet voor een specifieke periode op onbeschikbaar kunnen worden geplaatst bijvoorbeeld voor onderhoud.
+\end{itemize}
+
+In het reservatieprobleem kunnen er twee soorten constraints onderscheden worden: \textbf{harde constraints}, deze moeten kost wat kost voldaan worden, anders hebben we geen aanvaardbare toewijzing voor de onderneming en \textbf{zachte constraints}, constraints waaraan zoveel mogelijk voldaan dient te worden. Indien er niet aan één van deze zachte constraints voldaan kan worden, krijgt onze oplossing een gewogen strafscore $w_{m} \geq 0$. Hiernaast definiëren we de variabele $k_{m} \geq 0$ als het aantal keer dat de m-de constraint gebroken is. Tijdens het oplossen van het probleem dient dus de functie $\rho(\,s)\,=\sum\limits_{m} w_{m}k_{m}$ geminimaliseerd worden \autocite{santos}.  
+
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -24,23 +47,33 @@ Verwijs bij elke introductie van een term of bewering over het domein naar de va
 %   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
 %   ...'')
 
-Je mag gerust gebruik maken van subsecties in dit onderdeel.
-
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}
 \label{sec:methodologie}
+Een CSP oplossen is een complexe aangelegenheid. Voor het oplossen van deze complexe problemen bestaan er softwarebibliotheken. Een eerste deel van het onderzoek zal zijn om te onderzoeken of het CSP-probleem opgelost kan worden binnen de huidige technologiestack en indien niet welke externe softwarebibliotheek de meest logische keuze lijkt om het oplossen eenvoudiger te maken. Eens het CSP opgelost kan worden zal er onderzocht worden hoe dit geïntegreerd kan worden in de huidige architectuur van het systeem. 
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor experimenten, vragenlijsten, simulaties? Je beschrijft ook al welke tools je denkt hiervoor te gebruiken of te ontwikkelen.
+Het doel van het onderzoek is niet het oplijsten van de verschillende manieren om het vraagstuk op te lossen. Er zijn tientallen verschillende softwarepakketten en nog eens meer algoritmen om CSP problemen mee op te lossen. Deze allemaal vergelijken zou een onderzoek op zich zijn. Het doel van dit onderzoek is om \textit{een} manier te identificeren en te onderzoeken hoe deze geïntegreerd kan worden in de huidige architectuur en de mogelijke implicaties hiervan te identificeren. De eindscriptie zal als leidraad dienen voor de ontwikkelaars van Partago om een meer geoptimaliseerd reservatiesysteem te ontwikkelen. 
+
+Het onderzoek zal uit drie stappen bestaan:
+\begin{enumerate}
+	\item Welke software/algoritme gebruiken voor het oplossen van het CSP? 
+	\item Hoe de gekozen software integreren in huidige architectuur van het systeem met mogelijkheid van migratie?
+	\item Welke implicaties zijn er voor de user interface en de user experience?
+\end{enumerate}
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwachte resultaten}
 \label{sec:verwachte_resultaten}
+Voor het oplossen van het CSP is de meest voor de handliggende manier het gebruik van de softwarebibliotheek Optaplanner. Zelf een algoritme implementeren binnen de huidige technologiestack lijkt buiten de kennis, mogelijkheden en tijdsbestek te liggen van het ontwikkelaarsteam.
+Optaplanner is de meest aantoongevende CSP oplosser. Het is een lichtgewicht en integreerbare \textit{planning engine}. Het stelt normale Java programmeurs in staat om optimalisatieproblemen efficient op te lossen. \autocite{optaplanner} Het huidige reservatiesysteem maakt grotendeels gebruik van Google technologieën. Een alternatief dat het te bekijken waard is zijn de OR-tools door Google \autocite{ortools}. De meeste vakliteratuur nu reeds geraadpleegd vermeld Optaplanner. Een meer uitgebreide studie dient uitsluitsel te geven over welke software gebruikt gaat worden waarbij de werkbaarheid voor de ontwikkelaars van Partago de doorslaggevende factor zal zijn. De gekozen softwarebibliotheek zal specifiek geimplementeerd en geconfigureerd moeten worden zodat het het reservatieprobleem kan oplossen. Dit ligt ook binnen het bestek van dit onderzoek. Een demo-run met dummydata van auto's, zones en cooperanten dient bewijs te leveren dat de gekozen softwarebibliotheek in staat is om het probleem op een tijdsperformante manier op te lossen. 
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de stukken van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet hoe je je data gaat moeten structureren.
+Door de gebrekkige ervaring hoe het huidige reservatiesysteem op architecturaal niveau is opgebouwd, is het niet mogelijk om grote architectuurwijzigingen nu reeds te identificeren. Optaplanner kan met behulp \textit{frameworks} Camel of RESTEasy beschikbaar worden gesteld als REST service \autocite{manualoptaplanner}. In een microservice architectuur lijkt dit een mooie oplossing om een geavanceerder reservatiesysteem te integreren met de rest van de gebruikte technologiestack.
+
+Het huidige reservatieproces voor een gebruiker is heel eenvoudig. Er wordt gereserveerd voor een bepaalde periode voor een bepaalde auto. Wanneer reservaties niet langer voor een specifieke auto zullen, zijn moet de gebruiker wel verschillende van de \textit{constraints} kunnen bepalen. Er moet bewaakt worden dat dit op een gebruiksvriendelijke manier in de \textit{user-interface} geïmplementeerd wordt, zodat de positieve gebruikerservaring bewaard kan worden.
+
+%Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de stukken van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet hoe je je data gaat moeten structureren.%
 
 %---------- Verwachte conclusies ----------------------------------------------
 \section{Verwachte conclusies}
 \label{sec:verwachte_conclusies}
-
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
-
+Als Partago meer en meer coöperanten ten dienste wil zijn is het opschalen van het reservatiesysteem een kritische stap. De beoogde bachelorproef wil het plan uittekenen om deze kritische stap op een doordachte manier te nemen.  
