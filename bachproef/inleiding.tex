@@ -19,18 +19,19 @@ De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te
 
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}
 \label{sec:probleemstelling}
+Partago is een start-up en een coöperatie die elektrische auto's beschikbaar stelt aan haar coöperanten om te delen. Om dit mogelijk te maken heeft Partago een eigen software platform ontwikkeld: het Partago Platform. Deze software wil voldoen aan de specifieke noden die ontstaan wanneer een groep van gebruikers onderling elektrische auto's willen delen. Deze groep van burgers kunnen de coöperanten zelf zijn, maar even goed een lokale overheid of een bedrijf dat elektrische auto's wil delen onder de werknemers. Het Partago platform bestaat uit een applicatie voor de smartphone en een managementtool om de operationele processen die gepaard gaan met het delen van een elektrische vloot te ondersteunen. Een RESTful webservice zorgt voor een laag tussen de app en de database en handelt onder andere reserveringen af.
 
-Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's,'' systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
+Partago-auto's leven in zones. Het gebruik van een auto start en eindigt in de thuiszone van de wagen. Een voorbeeld van een zone is "Brugse Poort". Een auto met als thuiszone de Brugse Poort zal dus wanneer niet in gebruik geparkeerd zijn in deze wijk. Meerdere auto's kunnen dezelfde zone als thuis hebben. Naarmate de vloot groeit binnen één stad is het misschien zelfs opportuun om de gehele stad als één zone te aanzien. Dit is nu nog niet het geval. Vanaf een gebruiker het gebruik start is hij vrij waarheen hij reist, maar het gebruik kan pas terug worden afgesloten wanneer de auto zich terug in de thuiszone bevindt. Momenteel maakt een gebruiker een reservatie voor een specifieke auto of kiest hij voor spontaan gebruik van een specifieke auto. Hierdoor wordt er echter niet optimaal gebruik gemaakt van de verschillende auto's die beschikbaar zijn binnen de zone. Een voorbeeld: Karel, Joachim en Clara willen allen gebruik maken van een auto in zone X. Zone X is de thuislocatie van twee auto's: auto1 en auto2. Karel maakt een reservatie voor auto1 van 10h tot 12h. Joachim maakt een reservatie voor auto2 van 14h-17h. Clara wil ook gebruik maken van een Partago-auto. Zij zou de auto nodig hebben van 11h tot 16h. Er is echter geen enkele auto beschikbaar voor die tijdsspanne. Moesten echter Karel en Joachim beide gebruik maken van auto1 zou Clara perfect nog gebruik kunnen maken van auto2. Het systeem dwingt dit echter op geen enkele manier af. Een alternatieve manier om het reserveringssysteem op te stellen zou zijn dat de gebruikers geen specifieke auto reserveren, maar een zone. Zo zou het systeem voor de zon reservaties ontvangen van Karel voor 10h tot 12h, van Joachim voor 14h tot 17h en voor Clara van 11h tot 16h. Het systeem zou dan zelf een toewijzing kunnen doen om zoveel mogelijk gebruikers tevreden te stellen.
 
 \section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}
 \label{sec:onderzoeksvraag}
 
-Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
+Met het onderzoek beschreven in deze bachelorproef willen we een antwoord vinden op de vraag of het service level van Partago stijgt wanneer we de gebruikers geen specifieke auto's laten reserveren, maar enkel een zone. Deze onderzoeksvraag vormt de kern van het onderzoek. We definiëren het service level als het percentage van aangevraagde ritten dat daadwerkelijk ook kan doorgaan omdat er minstens nog één auto vrij is. Tevens zullen we enkele bijkomende, secondaire onderzoeksvragen willen beantwoorden. Hoe kunnen we het systeem de toewijzing laten doen en heeft deze wijziging van het reservatiemechanisme implicaties op het ontwerp van de databank en de rest van het systeem.
 
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}
 \label{sec:onderzoeksdoelstelling}
 
-Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv. om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
+Het onderzoek beoogt een simulatietool te ontwikkelen om de verschillende situaties tussen reserveren per auto en reserveren per zone te simuleren. In deze simulatietool moet het mogelijk zijn het aantal gebruikers en het aantal auto's in de zone te laten variëren. Voor elke specifieke combinatie van parameters beoogt de simulatietool een service level te genereren. Door de verschillende parameters te laten variëren kan er hopelijk een conclusie getrokken worden bij welk aantal gebruikers en bij welke grootte van de vloot het voor Partago opportuun wordt om het reserveringsmechanisme aan te passen.
 
 \section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}
 \label{sec:opzet-bachelorproef}
@@ -41,9 +42,13 @@ Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor suc
 
 De rest van deze bachelorproef is als volgt opgebouwd:
 
-In Hoofdstuk~\ref{ch:stand-van-zaken} wordt een overzicht gegeven van de stand van zaken binnen het onderzoeksdomein, op basis van een literatuurstudie.
+In Hoofdstuk~\ref{ch:stand-van-zaken} wordt een overzicht gegeven van de stand van zaken binnen het onderzoeksdomein. We bespreken eerder gedaan onderzoek op de vloot van Partago en een eerder ontwikkelde simulatietool die als basis zal dienen voor de eigen te ontwikkelen tool.We bekijken hoe we het systeem zo correct mogelijk kunnen modeleren.
 
-In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de gebruikte onderzoekstechnieken besproken om een antwoord te kunnen formuleren op de onderzoeksvragen.
+In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de gebruikte onderzoekstechnieken besproken om een antwoord te kunnen formuleren op de onderzoeksvragen. 
+
+In het Hoofdstuk ~\ref{ch:ontwikkeling-simulatietool} bekijken we hoe we de simulatietool ontwikkeld hebben.
+
+In het Hoofdstuk ~\ref{ch:uitvoeren-simulaties} voeren we verschillende simulaties aan met de ontwikkelde tool. We laten het aantal gebruikers en aantal auto's variëren zowel bij het reserveren van een specifieke auto als met het gekozen toewijzingsalgoritme. 
 
 % TODO: Vul hier aan voor je eigen hoofstukken, één of twee zinnen per hoofdstuk
 
