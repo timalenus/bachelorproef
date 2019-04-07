@@ -7,11 +7,14 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
+\section{Wat is autodelen?}
+Het fenomeen autodelen bestaat ondertussen zo'n 15-tal jaar in België \autocite{ing}, autodelen is echter geen recent fenomeen. Volgens \textcite{millardball} vinden we de eerste pogingen van een vastgestelde autodeelorganisatie terug in de jaren '40 in een coöperatief samenwoon-project in het Zwitserse Zürich. Het meeste onderzoek gedaan rond autodelen geeft echter geen formele definitie van wat autodelen nu exact is \autocite{millardball}. In dit onderzoek zullen we autodelen definiëren als "de toegang, via een abonnement of bundel, tot een vloot auto's via het zelfbedieningsprincipe, beschikbaar voor korte periodes en korte afstanden, waarvoor de gebruiker (particulier of bedrijf) een toeslag per uur en/of per afgelegde kilometer betaalt" \autocite{ing}.
 
-Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz. naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin, gebruik je \texttt{$\backslash${}textcite\{\}}.
-Soms wil je de auteur niet expliciet vernoemen, dan gebruik je \texttt{$\backslash${}autocite\{\}}. In de volgende paragraaf een voorbeeld van elk.
+\section{Wachtrijtheorie}
+In de masterthesis "Dimensionering van een autodeelsysteem aan de hand van wachtrijtheorie" beschrijft \textcite{van-buggenhout} hoe een reservatiesysteem zoals geïmplementeerd door Partago gemodeleerd kan worden aan de hand van wachtrijtheorie. De bevindingen van Van Buggenhout zijn uitermate interessant voor dit onderzoek. In haar werk wordt een grote voorzet gegeven hoe we voor de beoogde simulatietool van dit onderzoek een wiskundig model kunnen creëren. In wat volgt worden enkele nuttige bevindingen uit haar masterthesis beschreven.
 
-\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+\subsection{title}
 
-\lipsum[7-20]
+
+\section{Constraint Satisfaction Problem}
+Het toewijzen welke gebruiker welke auto krijgt kan herleidt worden tot een Constraint Satisfaction Problem in het kort een CSP. Een CSP is gedefinieerd door een set \textbf{variabelen} $X_{1}$, $X_{2},...,X_{n}$ en een set \textbf{constraints} $C_{1}, C_{2},...C_{m}$. Elke variabele $X_{i}$ heeft een niet leeg \textbf{domein} $D_{i}$ van mogelijke waarden. Elke constraint $C_{i}$ heeft betrekking tot een subset van de variabelen en specifieert de mogelijke combinaties van waarden voor deze subset. Een toestand van het probleem is gedefinieerd als een \textbf{toewijzing} van waarden aan sommige van de variabelen $X_{i} =  v_{i}, X_{j} = v_{j}$... Een toewijzing dat geen enkele van de constraints schendt is een \textbf{consistente} of legale toewijzing. Een volledige toewijzing of \textbf{oplossing} van het CSP is een toewijzing waarin alle variabelen vernoemd worden en aan alle constraints is voldaan. Soms moet een oplossing van een CSP er ook naar streven een strafscore te minimaliseren \autocite{norvig}.
