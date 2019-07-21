@@ -35,10 +35,24 @@ Elke Partago-coöperant heeft zijn eigen mobiliteitsbehoeften. Er wordt vanuit g
 Wanneer een gebruiker niet geserveerd kan worden door Partago zal deze gebruiker zijn mobiliteitsbehoeften elders moeten vervullen. Er staan dus nooit gebruikers in de wachtrij. De grootte van de wachtrij is met andere woorden nul.
 
 \subsection{Serviceproces}
-Het Partago systeem serveert een gebruiker wanneer deze gebruiker gebruik maakt van de gereserveerde auto. De service tijd wordt gedefinieerd als de tijd dat een gebruiker gebruik maakt van het systeem. De service tijden van alle gebruikers en servers zijn onafhankelijk van elkaar en worden veronderstelt exponentieel verdeelt te zijn. Omdat veronderstelt wordt dat de service tijden exponentieel verdeeld zijn gaan wordt er ook vanuit gegaan dat deze ook geheugenloos zijn. Met andere woorden: de kans dat een gebruiker zijn gebruik van de auto beëindigt is onafhankelijk van de tijd reeds gebruik gemaakt van de auto. Dit is in de praktijk echter niet waar voor elke gebruiker. Bijvoorbeeld: hoe langer het gebruik, hoe meer de gebruiker betaalt. Dit kan een intrinsieke motivatie zijn om het gebruik sneller te beëindigen.
+Het Partago systeem serveert een gebruiker wanneer deze gebruiker gebruik maakt van de gereserveerde auto. De service tijd wordt gedefinieerd als de tijd dat een gebruiker gebruik maakt van het systeem. De service tijden van alle gebruikers en servers zijn onafhankelijk van elkaar en worden veronderstelt exponentieel verdeelt te zijn en dus te modelleren zijn als poissonprocessen. De kans dat een gebruiker zijn gebruik van de auto beëindigt is onafhankelijk van de tijd reeds gebruik gemaakt van de auto.
 
 \subsection{Beschikbare servers}
 Het systeem bestaat uit een vast aantal auto's. Het systeem weet ook ten alle tijden welke auto's beschikbaar zijn en welke niet.
+
+\subsection{Conclusie}
+Aan de hand van wachtrijtheorie kon \textcite{van-buggenhout} een model creëren voor het Partago systeem. Dit model werd in een java-applicatie gegoten. Met behulp van deze applicatie werd de optimale vlootgrootte berekent voor de verschillende zones waar Partago actief was op het moment van schrijven van van Buggenhout's onderzoek. Als waarde voor de aankomstsnelheid voor het Poisson aankomstproces werd de aankomstsnelheid van de historisch drukste ochtend van die bepaalde zone gekozen. Uit het onderzoek werd geconcludeerd dat om het service level op 95\% te krijgen er in alle zones één auto moet bijkomen. Dit heeft echter een zeer negatief effect op de bezettingsgraad van de vloot. De impact van de verschillende parameters kan als volgt worden samengevat. 
+\begin{center}
+	\begin{tabular}{ | l | l | p{3cm} |}
+		\hline
+		Parameter & Relatie tot service level (QoS) & Impact op service level \\ \hline
+		Aankomstsnelheid $A_{p}$ & $A_{p}$ $\uparrow$ = $QoS$ $\downarrow$ & hoog \\ \hline
+		Aantal auto's $m$ & $m$ $\uparrow$ = $QoS$ $\uparrow$ & hoog \\ \hline
+		Gemiddelde gebruikstijd $MST$ & $MST$ $\uparrow$ = $QoS$ $\downarrow$ & hoog \\ \hline
+		Aantal gebruikers $S$ & $S$ $\uparrow$ = $QoS$ $\downarrow$ & laag \\ \hline
+	\end{tabular}
+\end{center} 
+In deze bachelorproef zal echter geen gebruik gemaakt worden van wachtrijtheorie. Het onderzoek van \textcite{van-buggenhout} werd geschreven kort na de oprichting van Partago en het systeem bevond zich dus nog in een zeer vroeg stadium. Voor dit onderzoek wordt gebruik gemaakt van een grote hoeveelheid historische reservaties als input voor het uitvoeren van de simulaties. In het hoofdstuk ~\ref{ch:methodologie} wordt verder uitgelegd hoe te werk is gegaan.
 
 \section{Constraint Satisfaction Problem}
 
