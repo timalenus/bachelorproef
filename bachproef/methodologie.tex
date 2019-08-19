@@ -15,13 +15,13 @@ De dataset die gebruikt zal worden in dit onderzoek bestaat voor filtering uit a
 figuur \ref{grafiek:aantal-reservaties-per-week} geeft het aantal reservaties per week weer na filtering. Over de volledige 26 weken durende periode komt dit neer op een gemiddelde van 137 reservaties per week. Dit is echter een weinig zeggend cijfer, aangezien er in elke week een verschillend aantal auto's actief was. 
 \begin{figure}[p]
 	\includegraphics[width=\textwidth]{grafiek-aantal-reservaties-per-week.png}
-	\caption[Aantal reservaties per week]{Histogram van het aantal reservaties per week na filtering}
+	\caption[Histogram van het aantal reservaties per week na filtering]{Histogram van het aantal reservaties per week na filtering}
 	\label{grafiek:aantal-reservaties-per-week}
 \end{figure}
 Figuur \ref{grafiek:aantal-reservaties-per-week-per-auto} geeft het gemiddelde aantal reservaties per week per auto weer alsook het maximum aantal reservaties voor een auto dat voorkwam in die week. Over de gehele periode was er een gemiddelde van 2,9 reservaties per week per auto. De drukste week voor één enkele auto was 20 reservaties per week. 
 \begin{figure}[p]
 	\includegraphics[width=\textwidth]{grafiek-gem-max-aantal-reservaties-per-week-per-auto.png}
-	\caption[Gemiddelde en maximum per week per auto]{Histogram van het gemiddelde en maximum aantal reservaties per week per auto}
+	\caption[Histogram van het gemiddelde en maximum aantal reservaties per week per auto]{Histogram van het gemiddelde en maximum aantal reservaties per week per auto}
 	\label{grafiek:aantal-reservaties-per-week-per-auto}
 \end{figure}
 
@@ -30,19 +30,19 @@ Partago richt zich vooral op korte termijn gebruik van de auto's. Dit laat zich 
 De gemiddelde duur van een reservatie is 3 uur en 32 minuten. 80,08\% van de reservaties heeft een tijdsduur tussen de 0 en 5 uur. 4,73\% duurt 5 minuten of minder. Terwijl slechts 0,73\% langer dan 24 uur duurt. Deze zeer korte reservaties van minder dan 5 minuten kunnen verklaard worden doordat gebruikers een auto verplaatsen binnen de thuiszone van de auto: bijvoorbeeld om deze aan de laadpaal te hangen of om deze vlak voor de deur van hun huis te plaatsen. Een andere mogelijke verklaring is dat de gebruiker iets vergeten was in de auto en deze zeer kort reserveert om de deuren te kunnen openmaken.  
 \begin{figure}[p]
 	\includegraphics[width=\textwidth]{grafiek-tijdsduur-reservaties.png}
-	\caption[Duur van een reservatie]{Histogram van de duur van een reservatie}
+	\caption[Histogram van de duur van een reservatie]{Histogram van de duur van een reservatie}
 	\label{grafiek:gebruiksduur}
 \end{figure}
 Figuur \ref{grafiek:weekdag} toont een histogram van de reservaties gegroepeerd per dag van de week. Maandag, dinsdag, donderdag en vrijdag zijn relatief gelijk. De drukste dag is over duidelijk zaterdag met 20,71\% van alle reservaties. Ook woensdag en zondag vertonen een kleine verhoging ten opzichte van de andere weekdagen.
 \begin{figure}[p]
 	\includegraphics[width=\textwidth]{grafiek-weekdag-reservaties.png}
-	\caption[Dag van de week van een reservatie]{Histogram van de reservaties verdeelt per weekdag}
+	\caption[Histogram van de reservaties gegroepeerd per weekdag]{Histogram van de reservaties gegroepeerd per weekdag}
 	\label{grafiek:weekdag}
 \end{figure}
 Ook figuur \ref{grafiek:starttijd} toont geen grote verrassingen. De meeste reservaties starten tussen 8 uur 's ochtends en 20 uur 's avonds (91,69\%).
 \begin{figure}[p]
 	\includegraphics[width=\textwidth]{grafiek-starttijd.png}
-	\caption[Starttijd van een reservatie]{Histogram van de startijd van de reservaties}
+	\caption[Histogram van de startijd van de reservaties]{Histogram van de startijd van de reservaties}
 	\label{grafiek:starttijd}
 \end{figure}
 
@@ -104,12 +104,12 @@ De dataset van reservaties die gegenereerd wordt is gebaseerd op bestaande reser
 Uit de gefilterde lijst van Partago reservaties zal een simulatie-specifieke dataset van reservaties gegenereerd worden voor een periode van het gedefinieerde aantal weken. In dit onderzoek zal elke dataset dus bestaan uit reservaties voor 4 weken. De parameter ``aantal reservaties`` zal bepalen hoeveel reservaties zich in de dataset bevinden. Dit aantal wordt willekeurig geselecteerd uit de historische Partago reservaties en gemapt op een willekeurige week in de dataset (week1, week2, week3 of week4), maar met behoudt van de dag van de week. Reservatiegedrag op een dinsdag is immers niet hetzelfde als reservatiegedrag op een zaterdag. Deze informatie mag  niet verloren gaan tijdens het mappen. Aangezien de reservaties willekeurig geselecteerd worden zullen de reservaties per dag in een willekeurige volgorde staan en dus niet in chronologische volgorde. Dit is eveneens de volgorde waarmee de reservaties toekomen bij het systeem. Figuur \ref{fig:visuele-voorstelling-dataset} is een visuele voorstelling van een eenvoudige dataset van 2 weken met 52 reservaties. Figuur \ref{fig:visuele-voorstelling-dag-dataset} toont in detail woensdag uit de dataset van figuur \ref{fig:visuele-voorstelling-dataset}. Merk op dat de reservaties niet in chronologische volgorde toekomen bij het systeem.
 \begin{figure}[h]
 	\includegraphics{dataset.png}
-	\caption[visuele voorstelling dataset]{visuele voorstelling van een dataset van 2 weken met 52 reservaties}
+	\caption[Visuele voorstelling van een dataset]{Visuele voorstelling van een dataset van 2 weken met 52 reservaties}
 	\label{fig:visuele-voorstelling-dataset}
 \end{figure}
 \begin{figure}[h]
 	\includegraphics{dataset-detail.png}
-	\caption[visuele voorstelling van 1 dag]{visuele voorstelling van 1 dag uit de dataset}
+	\caption[Visuele voorstelling van 1 dag in de dataset]{Visuele voorstelling van 1 dag uit de dataset}
 	\label{fig:visuele-voorstelling-dag-dataset}
 \end{figure}
 \section{Eenvoudige toewijzing} \label{eenvoudige-toewijzing}

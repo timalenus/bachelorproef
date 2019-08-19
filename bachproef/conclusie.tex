@@ -5,23 +5,23 @@
 \chapter{Conclusie}
 \label{ch:conclusie}
 
-\section{Waargenomen verbeteringen met csp toewijzing}
+\section{Waargenomen verbeteringen door gebruik te maken van een toewijzing met CSP}
 Figuur \ref{grafiek:gemiddeld-service-level} geeft een spreiding weer van het gemiddelde service level voor de gesimuleerde druktegraden voor zowel de eenvoudige toewijzing als voor de toewijzing met het csp algoritme. 
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{grafiek-gemiddeld-service-level.png}
-	\caption[Gemiddeld service level]{Grafiek van het gemiddelde servicel level per drukte graad}
+	\caption[Grafiek van het gemiddelde service level per druktegraad]{Grafiek van het gemiddelde service level per druktegraad}
 	\label{grafiek:gemiddeld-service-level}
 \end{figure}
 Figuur \ref{grafiek:gemiddelde-tijd-actief-per-auto} geeft een spreiding weer voor de gemiddelde tijd actief per auto voor de gesimuleerde druktegraden voor zowel de eenvoudige toewijzing als voor de toewijzing met het csp algoritme.
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{grafiek-gemiddelde-tijd-actief-per-auto.png}
-	\caption[Gemiddelde tijd actief per auto]{Grafiek van de gemiddelde tijd actief per auto per drukte graad}
+	\caption[Grafiek van de gemiddelde tijd actief per auto per druktegraad]{Grafiek van de gemiddelde tijd actief per auto per druktegraad}
 	\label{grafiek:gemiddelde-tijd-actief-per-auto}
 \end{figure}
 In figuur \ref{grafiek:gemiddeld-service-level} kan reeds in één oogopslag de meest voor de hand liggende conclusie getrokken worden: het service level voor de toewijzing met het csp algoritme ligt steeds hoger dan de eenvoudige toewijzing. De winstmarges die geboekt worden door het csp algoritme te gebruiken zijn echter klein. Over alle simulaties heen werd er een gemiddelde verhoging van 1,2\% van het service level waargenomen. 
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{grafiek-gemiddelde-verbetering-service-level.png}
-	\caption[Verbetering service level]{Gemiddelde verbetering van het service level met 3 en 5 auto's}
+	\caption[Grafiek van de gemiddelde verbetering van het service level]{Gemiddelde verbetering van het service level met 3 en 5 auto's}
 	\label{grafiek:gemiddelde-verbetering-service-level}
 \end{figure}
 Uit figuur \ref{grafiek:gemiddelde-verbetering-service-level} blijkt dat de verbeteringen voor hogere druktegraden wel hoger lijken te liggen. Hoe complexer het probleem, met andere woorden, hoe meer auto's en hoe drukker het systeem, hoe groter de mogelijke winstmarges lijken. Deze conclusie kan echter niet met zekerheid getrokken worden. Er zou nog meer getest moeten worden met hogere druktegraden en meer auto's. (zie ook sectie \ref{beperkingen-onderzoek}) De gemeten waarden voor druktegraad 30 met 3 auto's lijkt dit ook tegen te spreken.
@@ -29,7 +29,7 @@ Ook de gemiddelde tijd actief per auto ligt voor de csp toewijzing steeds hoger 
 Figuur \ref{grafiek:gemiddelde-verbetering-tijd-actief} toont de gemiddelde verbetering van de tijd dat een auto actief was voor 3 en 5 auto's. Deze grafiek ondersteund de conclusie dat hoe complexer het probleem het groter de winstmarge. De rechte die de data voor 5 auto's verbindt stijgt immers steiler dan die voor 3 auto's.
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{grafiek-gemiddelde-verbetering-tijd-actief-per-auto.png}
-	\caption[Verbetering tijd actief per auto]{Gemiddelde verbetering van de tijd actief per auto voor 3 en 5 auto's}
+	\caption[Grafiek van de gemiddelde verbetering van de tijd actief per auto]{Gemiddelde verbetering van de tijd actief per auto voor 3 en 5 auto's}
 	\label{grafiek:gemiddelde-verbetering-tijd-actief}
 \end{figure}
 
@@ -37,7 +37,7 @@ Figuur \ref{grafiek:gemiddelde-verbetering-tijd-actief} toont de gemiddelde verb
 \section{Antwoord op de onderzoeksvraag}
 De onderzoeksvraag die geformuleerd werd in het begin van deze onderzoekstekst luidde als volgt: ``Stijgt het service level en de gebruiksduur van de auto's van Partago  wanneer de gebruikers geen specifieke auto's reserveren, maar enkel een zone?'' Vertaalt naar hoe dit onderzoek gevoerd werd: stijgt het service level en de gebruiksduur van de auto's van Partago met een csp toewijzing ten opzichte van een eenvoudige toewijzing. Als de onderzoeksvraag als een ja-nee vraag geïnterpreteerd wordt dan is het antwoord ``ja''. De winstmarges voor zowel het service level als voor de tijd actief per auto zijn echter relatief klein. In het prijsmodel van Partago is de gereserveerde tijd één van de factoren die de prijs van een rit bepaald. Het is dan ook nuttig om de auto's actiever te maken, ook al is dit maar een beetje. In het huidige prijsmodel is de gemiddelde kostprijs per 3euro/uur voor de gebruiker. Afhankelijk van de druktegraad kan er dus per auto wel meer verdiend worden. Of deze financiële winstmarges opwegen ten opzichte van de kost dat het met zich zou meebrengen om de software van het systeem hieraan aan te passen is een oefening die in dit onderzoek moeilijk gemaakt kan worden, maar met de relatief kleine winstmarge van 1,2\% voor het service level wordt een voorzichtige ``nee'' geformuleerd op deze vraag. Moest uit verder onderzoek blijken dat de winstmarges hoger worden bij een nog drukker systeem kan wordt het in de verre toekomst van Partago misschien wel nuttig. Verder onderzoekzoek zal dit moeten uitwijzen.
 
-\section{Beperkingen van dit onderzoek en een aazet tot verder onderzoek} \label{beperkingen-onderzoek}
+\section{Beperkingen van dit onderzoek en een aanzet tot verder onderzoek} \label{beperkingen-onderzoek}
 De eerst grote beperking is het relatief kleine aantal datapunten die gebruikt zijn in dit onderzoek. De originele opzet met het uitvoeren van simulaties met zelf geschreven code was om een groot aantal datapunten te kunnen genereren voor een meer diverse set van parameters van de simulaties. De console-applicatie gebruikt in dit onderzoek is geschreven in Dart, net zoals de rest van het systeem van Partago. Voor de programmeertaal Dart bestaat er echter slechts 1 bibliotheek voor het oplossen van CSP's. Deze software bibliotheek is een zeer eenvoudige en niet performante implementatie zonder gebruik van de verschillende optimalisatiemogelijkheden zoals heuristieken. Hierdoor liep de rekentijd exponentieel op naarmate het probleem complexer werd. De rekentijd voor de uitgevoerde simulaties in dit onderzoek is nu reeds meer dan 100 uur. Verder onderzoek zou dit onderzoek kunnen herhalen, maar om het CSP op te lossen gebruik maken van meer performante manieren zoals de OptaPlanner gerefereerd in het onderzoeksvoorstel van dit onderzoek. 
 Een tweede grote beperking van dit onderzoek is dat voor de toewijzing van een auto aan een reservering er vanuit werd gegaan dat alle reservaties voor de dag gekend zijn voor de start van de eerste reservatie. Op dit tijdstip wordt het CSP probleem opgelost. In de praktijk komen er gedurende de dag echter nog reservaties bij of is er zelfs spontaan gebruik: mensen die een reservatie maken voor 5 minuten later. Momenteel wordt er in het onderzoek geen rekening gehouden met het tijdstip waarop de reservatie gemaakt werd. Deze informatie bevindt zich echter wel in de originele dataset van Partago-reservaties. Verder onderzoek zou wel kunnen gebruik kunnen maken van dit dataveld. Reservaties die dan reeds gestart of gepasseerd op de moment van toekomen van een reservatie mogen dan geen deel meer uitmaken van het CSP probleem.    
 
