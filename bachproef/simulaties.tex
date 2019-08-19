@@ -1,4 +1,58 @@
 \chapter{\IfLanguageName{dutch}{Resultaten van de simulaties}{Results of the simulations}}
 \label{ch:resultaten-simulaties}
+In dit hoofdstuk worden de resultaten van de verschillende simulaties weergeven. De simulaties worden uitgevoerd met een zelf geschreven console-applicatie waarvan de code zich in bijlage bevindt. Voor elke set van parameters in tabel \ref{tab:parameters} voeren we 30 maal een simulatie uit. De console-applicatie slaat voor elke run van een simulatie het service level, de duur dat de auto's actief waren en de duur van reservaties die niet konden worden toegewezen op in een bestand voor zowel de eenvoudige toewijzing als voor de CSP toewijzing. Deze bestanden worden geanalyseerd met behulp van een rekenblad.
+In de volgende secties worden de resultaten van de simulaties weergeven met volgende symbolen:
+\begin{itemize}
+	\item $\mu_{ SL}$: het gemiddelde service level
+	\item $\sigma^2$: standaardafwijking
+	\item $\mu_{ t}$: gemiddelde actieve tijd
+	\item $\mu_{\Delta_{ SL}}$: gemiddelde verbetering service level
+	\item $\mu_{\Delta_{ t}}$: gemiddelde verbetering actieve tijd
+\end{itemize}
 
+\section{Druktegraad: 9 reservaties/week/auto}
+Er werden 2 sets van parameters samengesteld met een druktegraad van 9 reservaties per week per auto. 
+De eerste set bestaat uit 108 reservaties verdeeld over 4 weken voor 3 auto's, de tweede bestaat uit 180 reservaties verdeeld over 4 weken voor 5 auto's. 
+De resultaten van de simulatie worden weergeven in \ref{tab:resultaten9}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ | c | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} |}
+		\hline
+		auto's & $\mu_{ SL}$ eenvoudig & $\sigma^2$ eenvoudig & $\mu_{ t}$ per auto eenvoudig & $\mu_{ SL}$ csp & $\sigma^2$ csp & $\mu_{ t}$ per auto csp & $\mu_{\Delta_{ SL}}$ & $\mu_{\Delta_{ t}}$ \\ \hline
+		3 & 94,04 & 2,21 & 97h39m & 94,99 & 2,03 & 100h21m & 0,99 & 8h7m  \\ \hline
+		5 & 96,63 & 1,74 & 101h43m & 97,33 & 1,63 & 103h52m & 0,70 & 10h46m \\ \hline
+	\end{tabular}
+	\caption{Tabel met resultaten van de simulaties met druktegraad 9 reservaties per week per auto}
+	\label{tab:resultaten9}
+\end{table}
+\section{Druktegraad: 15 reservaties/week/auto}
+Er werden 2 sets van parameters samengesteld met een druktegraad van 15 reservaties per week per auto. 
+De eerste set bestaat uit 180 reservaties verdeeld over 4 weken voor 3 auto's, de tweede bestaat uit 300 reservaties verdeeld over 4 weken voor 5 auto's. 
+De resultaten van de simulatie worden weergeven in \ref{tab:resultaten15}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ | c | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} |}
+		\hline
+		auto's & $\mu_{ SL}$ eenvoudig & $\sigma^2$ eenvoudig & $\mu_{ t}$ per auto eenvoudig & $\mu_{ SL}$ csp & $\sigma^2$ csp & $\mu_{ t}$ per auto csp & $\mu_{\Delta_{ SL}}$ & $\mu_{\Delta_{ t}}$ \\ \hline
+		3 & 85,54 & 2,40 & 141h09m & 86,98 & 2,45 & 147h08m & 1,44 & 17h56m  \\ \hline
+		5 & 90,4 & 1,79 & 150h09m & 91,87 & 1,66 & 156h39m & 0,47 & 32h28m \\ \hline
+	\end{tabular}
+	\caption{Tabel met resultaten van de simulaties met druktegraad 15 reservaties per week per auto}
+	\label{tab:resultaten15}
+\end{table}
+\section{Druktegraad: 30 reservaties/week/auto}
+Er werden 2 sets van parameters samengesteld met een druktegraad van 30 reservaties per week per auto. 
+De eerste set bestaat uit 360 reservaties verdeeld over 4 weken voor 3 auto's, de tweede bestaat uit 600 reservaties verdeeld over 4 weken voor 5 auto's. 
+De resultaten van de simulatie worden weergeven in \ref{tab:resultaten30}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ | c | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm} |}
+		\hline
+		auto's & $\mu_{ SL}$ eenvoudig & $\sigma^2$ eenvoudig & $\mu_{ t}$ per auto eenvoudig & $\mu_{ SL}$ csp & $\sigma^2$ csp & $\mu_{ t}$ per auto csp & $\mu_{\Delta_{ SL}}$ & $\mu_{\Delta_{ t}}$ \\ \hline
+		3 & 67,46 & 2,49 & 203h47m & 68,56 & 2,36 & 216h14m & 1,10 & 37h20m  \\ \hline
+		5 & 72,44 & 1,83 & 224h09m & 73,93 & 2,61 & 156h39m & 1,48 & 79h50m \\ \hline
+	\end{tabular}
+	\caption{Tabel met resultaten van de simulaties met druktegraad 30 reservaties per week per auto}
+	\label{tab:resultaten30}
+\end{table}
 
