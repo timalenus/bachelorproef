@@ -1,13 +1,13 @@
 \chapter{\IfLanguageName{dutch}{Resultaten van de simulaties}{Results of the simulations}}
 \label{ch:resultaten-simulaties}
-In dit hoofdstuk worden de resultaten van de verschillende simulaties weergeven. De simulaties worden uitgevoerd met een zelf geschreven simulatietool waarvan de code zich in bijlage bevindt. Voor elke set van parameters in tabel \ref{tab:parameters} voeren we 30 maal een simulatie uit. De simulatietool slaat voor elke run van een simulatie het service level, de duur dat de auto's actief waren en de duur van reservaties die niet konden doorgaan omdat er geen auto beschikbaar was op in een bestand voor zowel de eenvoudige toewijzing als voor de CSP toewijzing. Deze bestanden worden geanalyseerd met behulp van een rekenblad.
-In de volgende secties worden de resultaten van de simulaties weergeven met volgende symbolen:
+In dit hoofdstuk worden de resultaten van de verschillende simulaties weergeven. De simulaties werden uitgevoerd met een zelf geschreven simulatietool waarvan de code zich in bijlage bevindt. Voor elke set van parameters in tabel \ref{tab:parameters} wordt er 30 keer een simulatie uitgevoerd. De simulatietool slaat voor elke run het service level, de duur dat de auto's actief waren en de duur van reservaties die niet konden doorgaan omdat er geen auto beschikbaar was op in een bestand voor zowel de eenvoudige toewijzing als voor de CSP toewijzing. Deze bestanden werden geanalyseerd met behulp van een rekenblad.
+In wat volgt worden de resultaten van de simulaties weergeven met volgende symbolen:
 \begin{itemize}
 	\item $\mu_{ SL}$: het gemiddelde service level
 	\item $\sigma^2$: standaardafwijking
 	\item $\mu_{ t}$: gemiddelde actieve tijd
-	\item $\mu_{\Delta_{ SL}}$: gemiddelde verbetering service level
-	\item $\mu_{\Delta_{ t}}$: gemiddelde verbetering actieve tijd
+	\item $\mu_{\Delta_{ SL}}$: gemiddelde verbetering (delta) van het service level
+	\item $\mu_{\Delta_{ t}}$: gemiddelde verbetering (delta) van de actieve tijd per auto
 \end{itemize}
 Elke simulatie wordt 30 maal uitgevoerd. Een voorbeeld van de ruwe output data van een simulatie voor het service level wordt weergeven in figuur \ref{grafiek:ruwe-output-simulatie}. Een gelijkaardige grafiek kan opgesteld worden voor de actieve tijd van de auto's alsook van de tijd van de reservaties die niet konden doorgaan.
 \begin{figure}[h]
