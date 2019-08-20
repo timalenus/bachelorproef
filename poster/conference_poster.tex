@@ -75,9 +75,7 @@
 \color{HoGentAccent1} % Navy color for the abstract
 
 \begin{abstract}
-It's only a model.
-You don't vote for kings. Who's that then? We found them. Ni! Ni! Ni! Ni!
-The nose? On second thoughts, let's not go there. It is a silly place. Bloody Peasant! And the hat. She's a witch! Where'd you get the coconuts?
+Dit onderzoek onderzoekt één van de mogelijke optimalisaties van het reservatiesysteem van een autodeler: de gebruiker niet zelf een auto laten kiezen tijdens het reserveren, maar een auto laten toewijzen door een algoritme zodat de beschikbare auto's optimaal worden ingevuld. Het toewijzingprobleem wordt opgelost aan de hand van een Constraint Satisfaction Problem (CSP). Op basis van een dataset van historische reservaties werden simulaties uitgevoerd telkens met een verschillend aantal reservaties en een verschillend aantal beschikbare auto's. Voor elke simulatie werd de toewijzing van auto's aan reservaties éénmaal willekeurig gedaan en éénmaal aan de hand van de oplossing van het corresponderende CSP. Voor zowel de willekeurige toewijzing als voor de toewijzing met behulp van een CSP werd het service level, gedefinieerd als het percentage van reservaties dat kan doorgaan, en de actieve tijd per auto berekend. Uit de resultaten van de simulaties kan afgeleid worden dat er maar kleine winstmarges te boeken zijn voor het service level en de actieve tijd per auto door gebruik te maken van een CSP. Naarmate het systeem drukker en complexer wordt, meer reservaties en meer auto's, lijken de winstmarges te groeien. Echter door het gebruik van een niet-performant algoritme om het CSP op te lossen was dit onderzoek gelimiteerd om de complexiteit van de gesimuleerde systemen op te drijven. Een vervolg op dit onderzoek zou een meer geavanceerd algoritme kunnen gebruiken om het CSP op te lossen.
 \end{abstract}
 %----------------------------------------------------------------------------------------
 %	INTRODUCTION
@@ -87,15 +85,10 @@ The nose? On second thoughts, let's not go there. It is a silly place. Bloody Pe
 \section*{Introductie}
 \color{black}
 \color{black}
-Be quiet! Found them? In Mercia?! The coconut's tropical! But you are dressed as one… Well, what do you want? Knights of Ni, we are but simple travelers who seek the enchanter who lives beyond these woods.
-
-Well, what do you want? It's only a model. Camelot! We found them. We shall say 'Ni' again to you, if you do not appease us.
-
-The nose? Shut up! Burn her! I am your king. You don't vote for kings.
-
-You can't expect to wield supreme power just 'cause some watery tart threw a sword at you! Well, we did do the nose. I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
-
-Why do you think that she is a witch? We want a shrubbery!! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
+Partago is een coöperatie die elektrische auto's beschikbaar stelt aan haar coöperanten om te delen. Om dit mogelijk te maken heeft Partago een eigen software platform ontwikkeld. Deze software wil voldoen aan de specifieke noden die ontstaan wanneer een groep van gebruikers onderling elektrische auto's willen delen. Het Partago platform bestaat uit een applicatie voor de smartphone en een managementtool om de operationele processen die gepaard gaan met het delen van een elektrische vloot te ondersteunen.
+Partago-auto's leven in zones. Momenteel maakt een gebruiker een reservatie voor een specifieke auto of kiest hij voor spontaan gebruik van een specifieke auto. Hierdoor wordt er echter niet optimaal gebruik gemaakt van de verschillende auto's die beschikbaar zijn binnen één zone. Een voorbeeld: Karel, Joachim en Clara willen allen gebruik maken van een auto in de zone Brugse Poort. De Brugse Poort is de thuislocatie van twee auto's: auto1 en auto2. Karel maakt een reservatie voor auto1 van 10h tot 12h. Joachim maakt een reservatie voor auto2 van 14h-17h. Clara wil ook gebruik maken van een Partago-auto. Zij zou de auto nodig hebben van 11h tot 16h. Er is echter geen enkele auto beschikbaar gedurende die tijdsspanne. Moesten echter Karel en Joachim beide gebruik maken van auto1 zou Clara perfect nog gebruik kunnen maken van auto2. Het systeem dwingt dit echter op geen enkele manier af. Een alternatieve manier om het reserveringssysteem op te stellen zou zijn dat de gebruikers geen specifieke auto reserveren, maar een zone. Zo zou het systeem voor de zone reservaties ontvangen van Karel voor 10h tot 12h, van Joachim voor 14h tot 17h en van Clara voor 11h tot 16h. Het systeem zou dan zelf een toewijzing kunnen doen om zoveel mogelijk gebruikers tevreden te stellen.
+\paragraph{Onderzoeksvraag}
+Het onderzoek beschreven in deze bachelorproef wil een antwoord vinden op de vraag of het service level en de gebruiksduur van de auto's van Partago stijgt wanneer de gebruikers geen specifieke auto's reserveren, maar enkel een zone. Nadien wordt dan door het systeem een toewijzing gedaan wie welke fysieke auto toegewezen krijgt. Deze onderzoeksvraag vormt de kern van het onderzoek. We definiëren het service level als het percentage van aangevraagde ritten dat daadwerkelijk ook kan doorgaan omdat er minstens nog één auto vrij is.
 %----------------------------------------------------------------------------------------
 %	GEOLOGY
 %----------------------------------------------------------------------------------------
@@ -104,25 +97,37 @@ Why do you think that she is a witch? We want a shrubbery!! I don't want to talk
 \color{HoGentAccent1} 
 \section*{Experimenten}
 \color{black}
-A newt? Camelot! Why? No, no, no! Yes, yes. A bit. But she's got a wart.
-
-Shut up! I dunno. Must be a king. Who's that then? Look, my liege! On second thoughts, let's not go there. It is a silly place.
-
-Shut up! Will you shut up?! No, no, no! Yes, yes. A bit. But she's got a wart. He hasn't got shit all over him. It's only a model. It's only a model.
-
-Bring her forward! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave 
-
-
+Met een zelf ontwikkelde simulatietool werden simulaties uitgevoerd voor een verschillend aantal reservaties en een verschillend aantal beschikbare auto's, telkens over een periode van 4 weken. De reservaties gebruikt in een simulatie komen uit een dataset van historische reservaties gedaan op het systeem van Partago tussen 1 januari 2019 en 30 juni 2019. De reservaties in een simulatie gedragen zich dus als reëele Partago reservaties. Uit de dataset van historische reservaties wordt een dataset samengesteld voor de simulatie van 4 weken. Het aantal reservaties hangt af van de te simuleren druktegraad. De reservaties worden willekeurig gekozen uit de dataset van historische gegevens en gemapt op 1 van de 4 weken in de simulatie met behoudt van dag van de week. Omdat de reservaties willekeurig gekozen worden uit de historische reservaties zullen de reservaties in de simulatie niet in chronologische volgorde staan. In het reëele systeem komen reservaties immers ook niet chronologisch toe. Een reservatie voor 16h 's middags komt niet per se toe na een reservatie voor 8h 's ochtends. Voor de gegenereerde dataset in de simulatie wordt dan telkens een eenvoudige toewijzing gedaan en een toewijzing met behulp van het oplossen van de corresponderende CSP's. Voor volgende sets van parameters werden simulaties uitgevoerd: 
+\begin{center}
+	\label{tab:parameters}
+	\begin{tabular}{ | l | l | l | p{3cm} |}
+		\hline
+		Aantal reservaties & Aantal auto's & Druktegraad & Aantal weken \\ \hline
+		108 & 3 & 9 reservaties/week/auto & 4 \\ \hline
+		180 & 5 & 9 reservaties/week/auto & 4 \\ \hline
+		180 & 3 & 15 reservaties/week/auto & 4 \\ \hline
+		300 & 5 & 15 reservaties/week/auto & 4 \\ \hline
+		360 & 3 & 30 reservaties/week/auto & 4 \\ \hline
+		600 & 5 & 30 reservaties/week/auto & 4 \\ \hline
+	\end{tabular}
+\end{center} 
 
 \color{HoGentAccent1} 
-\section*{Sectie met figuur}
+\section*{Resultaten}
 \color{black}
 
 
 \begin{center}\vspace{1cm}
-\includegraphics[width=1.0\linewidth]{grail}
-\captionof{figure}{\color{HoGentAccent5} He hasn't got shit all over him. The nose? Where'd you get the coconuts? What do you mean? We shall say 'Ni' again to you, if you do not appease us}
+\includegraphics[width=1.0\linewidth]{grafiek-gemiddelde-tijd-actief-per-auto.png}
+\label{grafiek1}
+\captionof{figure}{\color{HoGentAccent5} Grafiek van de gemiddelde tijd actief per auto per druktegraad.}
 \end{center}\vspace{1cm}
+\begin{center}\vspace{1cm}
+	\includegraphics[width=1.0\linewidth]{grafiek-gemiddeld-service-level.png}
+	\label{grafiek2}
+	\captionof{figure}{\color{HoGentAccent5} Grafiek van het gemiddelde service level}
+\end{center}\vspace{1cm}
+Beide figuren vatten de resultaten van de simulaties goed samen. Figuur  \ref{grafiek1} toont de gemiddelde tijd dat een auto actief was. Blauw is met de eenvoudige toewijzing, oranje met de toewijzing met behulp van CSP's. Voor alle simulaties was de tijd actief met het toewijzingsalgoritme hoger in vergelijking met de eenvoudige toewijzing. Figuur \ref{grafiek2} vertoont gelijke resultaten. Het service level voor toewijzing met CSP's ligt steeds hoger dan de eenvoudige toewijzing.
 
 %------------------------------------------------
 
@@ -131,18 +136,14 @@ Bring her forward! I don't want to talk to you no more, you empty-headed animal 
 \color{HoGentAccent1} 
 \section*{Conclusies}
 \color{black}
-on't underestimate the Force. Oh God, my uncle. How am I ever gonna explain this? I suggest you try it again, Luke. This time, let go your conscious self and act on instinct. Don't be too proud of this technological terror you've constructed. The ability to destroy a planet is insignificant next to the power of the Force.
+De winstmarges voor zowel het service level als voor de actieve tijd van een auto zijn relatief klein. Voor het service level werd over alle simulaties heen een gemiddelde verbetering van 1,2\% waargenomen. Naarmate het systeem complexer wordt, meer reservaties en meer auto's, lijkt de winstmarge van de toewijzing met CSP te groeien ten op zichte van de eenvoudige toewijzing. Dit wordt ook weergegeven in figuur \ref{grafiek1}. De simulaties met hogere drukte graad, rechts in de figuur, vertonen een groter verschil tussen blauw (de eenvoudige toewijzing) en oranje (de toewijzing met behulp van CSP's)
 %----------------------------------------------------------------------------------------
 %	FORTHCOMING RESEARCH
 %----------------------------------------------------------------------------------------
 \color{HoGentAccent1} 
 \section*{Toekomstig onderzoek}
 \color{black}
-
-I care. So, what do you think of her, Han? No! Alderaan is peaceful. We have no weapons. You can't possibly… I have traced the Rebel spies to her. Now she is my only link to finding their secret base.
-
-Kid, I've flown from one side of this galaxy to the other. I've seen a lot of strange stuff, but I've never seen anything to make me believe there's one all-powerful Force controlling everything. There's no mystical energy field that controls my destiny. It's all a lot of simple tricks and nonsense. You are a part of the Rebel Alliance and a traitor! Take her away! 
-
+Een grote beperking van dit onderzoek is het relatief kleine aantal datapunten die gebruikt zijn. De originele opzet met het uitvoeren van simulaties met zelf geschreven code was om een groot aantal datapunten te kunnen genereren voor een meer diverse set van parameters van de simulaties. De simulatietool gebruikt in dit onderzoek is geschreven in Dart, net zoals de rest van het systeem van Partago. Voor de programmeertaal Dart bestaat er echter slechts 1 bibliotheek voor het oplossen van CSP's. Deze software bibliotheek is een zeer eenvoudige en niet performante implementatie zonder gebruik van de verschillende optimalisatiemogelijkheden zoals heuristieken. Hierdoor liep de rekentijd exponentieel op naarmate het probleem complexer werd. De rekentijd voor de uitgevoerde simulaties in dit onderzoek is nu reeds meer dan 100 uur. Verder onderzoek zou dit onderzoek kunnen herhalen, maar om het CSP op te lossen gebruik maken van meer performante manieren zoals de OptaPlanner gerefereerd in het onderzoeksvoorstel van dit onderzoek. 
 
 %----------------------------------------------------------------------------------------
 
